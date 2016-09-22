@@ -1,0 +1,110 @@
+.jumbotron{
+background-image: url(../images/City.jpg);
+ 
+    background-attachment: scroll;
+    font-family: cursive;
+       color: white;
+    min-height: 500px;
+  
+}
+.navbar-nav {
+float: none;
+text-align: center;
+font-size: 17px;
+}
+.navbar-nav li {
+float: none;
+display: inline-block;
+}
+
+.footer{
+  width:100%;
+  background:#111;
+}
+
+.footer a {
+  font-size:14px;
+}
+
+.footer .logo{
+  position:relative;
+  width:80px;
+  height:61px;
+  margin: 0 auto;
+  padding-top:50px;
+  opacity: .3;
+}
+
+.footer .menu-footer{
+  width:80%;
+  text-align:center;
+  margin:0 auto;
+  padding-top:30px;
+  overflow: hidden;
+  position:relative;
+}
+
+
+.footer .menu-footer a{
+   font-family: 'Lato', sans-serif;
+  line-height:46px;
+  padding:10px;
+  color:#a4a4a4;
+  -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.footer .menu-footer a:hover{
+  color:#2fa68e;
+}
+
+.footer .copyright{
+  font-family: 'Lato', sans-serif;
+  width:80%;
+  position:relative;
+  font-weight:300;
+  margin:0 auto;
+  padding:30px 0 50px;
+  text-align:center;
+  font-size:14px;
+  line-height:36px;
+  color:#a4a4a4;
+}
+
+.image {
+    border-radius: 6px;
+    border: 0;
+    display: inline-block;
+    position: relative;
+  }
+
+    .image img {
+      border-radius: 6px;
+      display: block;
+    }
+
+    .image.left {
+      float: left;
+      padding: 0 1.5em 1em 0;
+      top: 0.25em;
+    }
+
+    .image.right {
+      float: right;
+      padding: 0 0 1em 1.5em;
+      top: 0.25em;
+    }
+
+    .image.fit {
+      display: block;
+      margin: 0 0 2em 0;
+      width: 100%;
+    }
+
+      .image.fit img {
+        display: block;
+        width: 100%;
+      }

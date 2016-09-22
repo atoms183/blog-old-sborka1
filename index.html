@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>TECHNICAL-BLOG</title>
 
     <!-- Bootstrap -->
+     <!-- Custom Fonts -->
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -22,8 +24,8 @@
 <style>
    body { 
        
-    background-image: url(images/11.jpg); 
-   background-attachment: fixed; 
+    background-image: url(images/11.jpg); /* Путь к изображению */
+   background-attachment: fixed; /* Фиксируем фон  */
    }
   </style>
   </head>
@@ -74,7 +76,7 @@
     </div>
       
  
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,7 +84,17 @@
         <h4 class="modal-title" id="myModalLabel">Войдите в учетную запись</h4>
       </div>
       <div class="modal-body">
-    
+<div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Введите данные для входа</h2>
+
+  <form class="login-container">
+    <p><input type="email" placeholder="Логин"></p>
+    <p><input type="password" placeholder="Пароль"></p>
+    <p><input type="submit" value="Войти"></p>
+  </form>
+</div>
 </div>
       </div>
       <div class="modal-footer">
@@ -90,14 +102,15 @@
     </div>
   </div>
 </div>
-    
       <div class="container-fluid container-fluid-fixed-top">
           <div class="row">
            <div class=" col-md-12 jumbotron">    
            <div class="text-center">
                <h1>TECHNICAL-BLOG</h1>
                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit,incididunt ut labore et dolore magna aliqua.</h2>
-                  <a href="#myModal" class="btn btn-lg btn-danger" >Войти в учетную запись</a>
+                     <div id="lastmain">
+     <a href="#myModal" class="main-action" data-toggle="modal" data-target="#myModal">Войти в учетную запись</a>
+    </div>
            </div>
               
               </div>  

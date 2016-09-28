@@ -26,7 +26,10 @@
   </head>
   <body>
              
-         
+         <div class="loader">
+		<div class="loader_inner"></div>
+	</div>
+
                <div class="navbar-wrapper">
       <div class="container-fluid">
 
@@ -84,10 +87,13 @@
   
   <h2 class="login-header">Введите данные для входа</h2>
 
-  <form class="login-container">
-    <p><input type="email" placeholder="Логин"></p>
-    <p><input type="password" placeholder="Пароль"></p>
-    <p><input type="submit" value="Войти"></p>
+  <form class="login-container" action="index.php" method="post">
+
+     <p><input type="email" name="login"  required placeholder="Логин"></p>
+  
+    <p><input type="password" name="password" required placeholder="Пароль"></p>
+
+    <p><input type="submit" name="Войти"></p>
   </form>
 </div>
 </div>
@@ -97,6 +103,7 @@
     </div>
   </div>
 </div>
+
       <div class="container-fluid container-fluid-fixed-top">
           <div class="row">
            <div class=" col-md-12 jumbotron">    
@@ -187,8 +194,66 @@
       </div>
       <div class="copyright">© 2016 TECHNICAL-BLOG</div>
 
-    </section>       
+    </section>  
+
+
+<?php $connection = mysqli_connect('localhost', 'root', '', 'reg') or die(mysqli_error()); // Соединение с базой данных ?>
+
+<?php if (isset($_POST['submit'])) // Отлавливаем нажатие кнопки "Отправить"
+{
+if (empty($_POST['login'])) // Если поле логин пустое
+{
+echo '<script>alert("Поле логин не заполненно");</script>'; // То выводим сообщение об ошибке
+}
+elseif (empty($_POST['password'])) // Если поле пароль пустое
+{
+echo '<script>alert("Поле пароль не заполненно");</script>'; // То выводим сообщение об ошибке
+}
+else  // Иначе если все поля заполненны
+{    
+$login = $_POST['login']; // Записываем логин в переменную 
+$password = $_POST['password']; // Записываем пароль в переменную           
+$query = mysqli_query($connection, "SELECT `id` FROM `users` WHERE `login` = '$login' AND `password` = '$password'"); // Формируем переменную с запросом к базе данных с проверкой пользователя
+$result = mysqli_fetch_array($query); // Формируем переменную с исполнением запроса к БД 
+if (empty($result['id'])) // Если запрос к бд не возвразяет id пользователя
+{
+echo '<script>alert("Неверные Логин или Пароль");</script>'; // Значит такой пользователь не существует или не верен пароль
+}
+else // Если возвращяем id пользователя, выполняем вход под ним
+{
+$_SESSION['password'] = $password; // Заносим в сессию  пароль
+$_SESSION['login'] = $login; // Заносим в сессию  логин
+$_SESSION['id'] = $result['id']; // Заносим в сессию  id
+echo '<div align="center">Вы успешно вощли в систему: '.$_SESSION['login'].'</div>'; // Выводим сообщение что пользователь авторизирован        
+}     
+}   
+} ?>
+
+<?php if (isset($_GET['exit'])) { // если вызвали переменную "exit"
+unset($_SESSION['password']); // Чистим сессию пароля
+unset($_SESSION['login']); // Чистим сессию логина
+unset($_SESSION['id']); // Чистим сессию id
+} ?>
+
+<?php if (isset($_SESSION['login']) && isset($_SESSION['id'])) // если в сессии загружены логин и id
+{
+echo '<div align="center"><a href="index.php?exit">Выход</a></div>'; // Выводим нашу ссылку выхода
+} ?>
+
+<?php if (!isset($_SESSION['login']) || !isset($_SESSION['id'])) // если в сессии не загружены логин и id
+{
+//echo '<div id="lastmain">
+//      <a href="reg.php" class="main-action">Создать &nbsp;<i class="fa fa-smile-o" aria-hidden="true"></i> &mdash; учетную запись</a>
+//    </div>'; // Выводим нашу ссылку регистрации
+} ?>
+
+
+
+
+
+     
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
+		 <script src="js/main.js"></script>    
   </body>
 </html>
